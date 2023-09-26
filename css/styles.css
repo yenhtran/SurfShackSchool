@@ -128,3 +128,8 @@ img {
   margin-bottom: 15px;
 }
 
+/* Comps */
+.cases img:hover {
+  opacity: 0.7;
+}
+

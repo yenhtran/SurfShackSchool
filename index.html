@@ -14,13 +14,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link rel="stylesheet" href="css/lightbox.min.css" />
     <link rel="stylesheet" href="css/utilities.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <title>Welcome To SurfShackSchool</title>
   </head>
   <body id="home">
     <header class="hero">
-      <div id="navbar" class="navbar">
+      <div id="navbar" class="navbar top">
         <h1 class="logo">
           <span class="text-primary material-symbols-outlined">surfing</span>
           <span class="text-primary">Surf</span> Shack School
@@ -38,7 +39,7 @@
 
       <div class="content">
         <h1>This Is Where You Belong</h1>
-        <p>We provide world class surfing lessons</p>
+        <p>We provide a world class surfing experience</p>
         <a href="#about" class="btn">
           <i class="fas fa-chevron-right"> Read More</i>
         </a>
@@ -105,20 +106,68 @@
         </header>
         <div class="row">
           <div class="column">
-            <img src="images/comps/comp1.jpg" alt="" />
-            <img src="images/comps/comp2.jpg" alt="" />
+            <a
+              href="images/comps/comp1.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quasi."
+            >
+              <img src="images/comps/comp1.jpg" alt="" />
+            </a>
+            <a
+              href="images/comps/comp2.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, qui."
+            >
+              <img src="images/comps/comp2.jpg" alt="" />
+            </a>
           </div>
           <div class="column">
-            <img src="images/comps/comp3.jpg" alt="" />
-            <img src="images/comps/comp4.jpg" alt="" />
+            <a
+              href="images/comps/comp3.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aspernatur!"
+            >
+              <img src="images/comps/comp3.jpg" alt="" />
+            </a>
+            <a
+              href="images/comps/comp4.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, quibusdam."
+            >
+              <img src="images/comps/comp4.jpg" alt="" />
+            </a>
           </div>
           <div class="column">
-            <img src="images/comps/comp5.jpg" alt="" />
-            <img src="images/comps/comp6.jpg" alt="" />
+            <a
+              href="images/comps/comp5.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, libero!"
+            >
+              <img src="images/comps/comp5.jpg" alt="" />
+            </a>
+            <a
+              href="images/comps/comp6.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, adipisci?"
+            >
+              <img src="images/comps/comp6.jpg" alt="" />
+            </a>
           </div>
           <div class="column">
-            <img src="images/comps/comp7.jpg" alt="" />
-            <img src="images/comps/comp8.jpg" alt="" />
+            <a
+              href="images/comps/comp7.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, aliquid!"
+            >
+              <img src="images/comps/comp7.jpg" alt="" />
+            </a>
+            <a
+              href="images/comps/comp8.jpg"
+              data-lightbox="cases"
+              data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, animi!"
+            >
+              <img src="images/comps/comp8.jpg" alt="" />
+            </a>
           </div>
         </div>
       </section>
@@ -213,5 +262,46 @@
       </div>
       <p>Copyright &copy; 2023 - Surf Shack School</p>
     </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/lightbox.min.js"></script>
+    <script>
+      const navbar = document.getElementById('navbar');
+      let scrolled = false;
+
+      window.onscroll = () => {
+        if (window.pageYOffset > 100) {
+          navbar.classList.remove('top');
+          if (!scrolled) {
+            navbar.style.transform = 'translateY(-70px)';
+          }
+          setTimeout(() => {
+            navbar.style.transform = 'translateY(0)';
+            scrolled = true;
+          }, 200);
+        } else {
+          navbar.classList.add('top');
+          scrolled = false;
+        }
+      };
+
+      // Smooth Scrooling
+      $('#navbar a, .btn').on('click', function (e) {
+        if (this.hash !== '') {
+          e.preventDefault();
+          const hash = this.hash;
+
+          $('html, body').animate(
+            {
+              scrollTop: $(hash).offset().top - 100,
+            },
+            800
+          );
+        }
+      });
+    </script>
   </body>
 </html>
